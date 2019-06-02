@@ -1,3 +1,19 @@
-<p>
-  main works!
-</p>
+<div class="swiper-container" [swiper]="config" (indexChange)="onIndexChange($event)">
+  <div class="swiper-wrapper">
+    <div *ngFor="let slide of slides" class="swiper-slide">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+        {{slide}}
+      </div>
+    </div>
+  </div>
+
+
+  <div class="pagination">
+    <div *ngFor="let slide of slides; let i = index" class="pagination-item" [ngClass]="{'blue': i <= ind, 'active': i == ind}">
+      <div class="index" *ngIf="i <= ind">{{i + 1}}</div>
+    </div>
+  </div>
+
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

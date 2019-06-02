@@ -1,0 +1,36 @@
+.swiper-slide {
+  height: 40rem;
+  display: flex;
+}
+
+.pagination {
+  display: flex;
+}
+
+.pagination-item {
+  flex: 1 1 auto;
+  height: 40px;
+  background: #bbbbbb;
+  opacity: 0.5;
+}
+
+.blue {
+  background: #007aff;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.7;
+  }
+  &:active {
+    opacity: 1;
+  }
+}
+
+.active {
+  opacity: 0.85;
+}
+
+.index {
+  text-align: center;
+  font-size: 32px;
+  color: white;
+}

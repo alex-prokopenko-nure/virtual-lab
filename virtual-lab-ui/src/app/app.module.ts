@@ -35,6 +35,15 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MainComponent } from './components/main/main.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { FlexLayoutModule } from '@angular/flex-layout';
+ 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -74,9 +83,16 @@ import { MainComponent } from './components/main/main.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SwiperModule,
+    FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
