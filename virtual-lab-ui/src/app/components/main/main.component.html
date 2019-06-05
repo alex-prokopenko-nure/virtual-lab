@@ -1,19 +1,29 @@
-<div class="swiper-container" [swiper]="config" (indexChange)="onIndexChange($event)">
+<div class="swiper-container" [swiper]="config" (indexChange)="onIndexChange($event)" [index]="ind">
   <div class="swiper-wrapper">
     <div *ngFor="let slide of slides" class="swiper-slide">
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-        {{slide}}
+      <div class="slide-title">
+        {{slide.title}}
+      </div>
+      <div class="content-holder">
+        <div class="text-content">
+          <div *ngFor="let act of slide.acts">
+            <span class="text" *ngIf="act.textRevealed">{{act.text}}</span>
+          </div>
+        </div>
+        <div [ngStyle]="getSlideImagesStyles(slide)" class="image-content">
+        </div>
       </div>
     </div>
   </div>
-
-
-  <div class="pagination">
-    <div *ngFor="let slide of slides; let i = index" class="pagination-item" [ngClass]="{'blue': i <= ind, 'active': i == ind}">
-      <div class="index" *ngIf="i <= ind">{{i + 1}}</div>
-    </div>
+  <!-- <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> -->
+</div>
+<div class="pagination">
+  <div *ngFor="let slide of slides; let i = index" class="pagination-item" [ngClass]="{'blue': i <= maxIndex, 'active': i == ind}">
+    <div class="index" (click)="goToPage(i)" *ngIf="i <= maxIndex">{{i + 1}}</div>
   </div>
-
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+</div>
+<div class="btn-holder">
+  <div class="btn prev" [ngClass]="{'disabled': ind == 0 || disabled}" (click)="prevPage()"><mat-icon style="font-size: 220px !important;">arrow_back</mat-icon></div>
+  <div class="btn next" [ngClass]="{'disabled': (ind == slides.length - 1) || disabled}" (click)="nextPage()"><mat-icon style="font-size: 220px !important;">arrow_forward</mat-icon></div>
 </div>
