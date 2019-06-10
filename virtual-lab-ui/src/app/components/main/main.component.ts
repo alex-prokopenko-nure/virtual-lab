@@ -3,6 +3,7 @@ import { SwiperConfigInterface, SwiperPaginationInterface, SwiperComponent, Swip
 import { Slide } from 'src/app/models/slide.model';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main',
@@ -12,8 +13,16 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class MainComponent implements OnInit {
   public slides: Slide[] = [
     {title: 'First slide', acts: [
-      {text: "Fuck you", imageRef: '../../../assets/images/gora.jpg', textRevealed: false, imageRevealed: false, imagePosX: 250, imagePosY: 100},
-      {text: "Faggot", imageRef: '../../../assets/images/park.jpg', textRevealed: false, imageRevealed: false, imagePosX: 350, imagePosY: 50}
+      {text: "Fuck you", imageRef: '../../../assets/images/2/Штатив-1.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Спиртовка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Колба-2.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Банка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/шланг.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Колба-1.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Колба.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Штатив.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Кристализатор.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
+      {text: "Faggot", imageRef: '../../../assets/images/2/Пробирка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0}
     ]},
     {title: 'Second slide', acts: [
       {text: "Suck my", imageRef: undefined, textRevealed: false, imageRevealed: false, imagePosX: 250, imagePosY: 100},
@@ -50,7 +59,7 @@ export class MainComponent implements OnInit {
 
   @ViewChild(SwiperDirective, {read: 0, static: true}) directiveRef: SwiperDirective;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.playAnimation(this.ind);
@@ -113,14 +122,24 @@ export class MainComponent implements OnInit {
     }
   }
 
-  getSlidesImagesStyles = (slide: Slide) => {
-    let imageRefs: string[] = [];
+  getSlideImagesStyles = (slide: Slide) => {
+    let imageRefs = [];
     let imagePositions: string[] = [];
     for (let i = 0; i < slide.acts.length; ++i) {
       if (slide.acts[i].imageRevealed) {
-        imageRefs.push(slide.acts[i].imageRef);
+        imageRefs.push(this.sanitizer.bypassSecurityTrustStyle(slide.acts[i].imageRef));
         imagePositions.push(`${slide.acts[i].imagePosX}px ${slide.acts[i].imagePosY}px`);
       }
     }
+    if (!imageRefs.length) {
+      return "";
+    }
+
+    let styles = {};
+
+    styles['background-image'] = this.sanitizer.bypassSecurityTrustStyle(imageRefs.join());
+    styles['background-position'] = this.sanitizer.bypassSecurityTrustStyle(imagePositions.join());
+
+    return styles;
   }
 }

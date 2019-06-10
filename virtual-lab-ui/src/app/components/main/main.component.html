@@ -10,7 +10,10 @@
             <span class="text" *ngIf="act.textRevealed">{{act.text}}</span>
           </div>
         </div>
-        <div [ngStyle]="getSlideImagesStyles(slide)" class="image-content">
+        <div class="image-content">
+          <div *ngFor="let act of slide.acts; let i = index;" style="position: absolute" [ngStyle]="{ 'left': act.imagePosX + 'px', 'top': act.imagePosY + 'px', 'z-index': i }">
+            <img *ngIf="act.imageRevealed" [src]="act.imageRef" />
+          </div>
         </div>
       </div>
     </div>
