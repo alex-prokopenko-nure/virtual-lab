@@ -1,8 +1,8 @@
+import { Image } from './image.model';
+
 export class Act {
+  public text: string;
   public textRevealed: boolean;
   public imageRevealed: boolean;
-  public text: string;
-  public imageRef: string;
-  public imagePosX: number;
-  public imagePosY: number;
+  public image: Image;
 }

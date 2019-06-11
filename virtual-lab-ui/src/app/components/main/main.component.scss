@@ -1,5 +1,5 @@
 .swiper-slide {
-  height: 40rem;
+  height: calc(100vh - 264px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,22 +18,19 @@
 }
 
 .text-content {
-  width: 50%;
-  height: calc(100% - 6rem);
-  border: 3px solid red;
+  width: 30%;
+  height: calc(100% - 6px - 6rem);
   padding: 3rem 3rem;
 }
 
 .image-content {
-  width: 50%;
-  height: 100%;
-  border: 3px solid red;
+  width: 70%;
+  height: calc(100% - 6px);
   position: relative;
 }
 
 .pagination {
   display: flex;
-  margin-top: 10px;
 }
 
 .pagination-item {
@@ -73,7 +70,11 @@
   cursor: pointer;
   color: #007aff;
   width: 50%;
-  text-align: center;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
   user-select: none;      
   &:hover {
     background: #007aff;
@@ -138,4 +139,11 @@ img {
 @-o-keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
+}
+
+@media screen and (max-width: 1024px) {
+  img {
+    width: 80%;
+    height: 80%;
+  }
 }

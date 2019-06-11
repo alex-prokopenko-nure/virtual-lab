@@ -4,6 +4,7 @@ import { Slide } from 'src/app/models/slide.model';
 import { MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
+import { SlideType } from 'src/app/enums/slide-type.enum';
 
 @Component({
   selector: 'app-main',
@@ -12,26 +13,207 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class MainComponent implements OnInit {
   public slides: Slide[] = [
-    {title: 'First slide', acts: [
-      {text: "Fuck you", imageRef: '../../../assets/images/2/Штатив-1.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Спиртовка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Колба-2.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Банка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/шланг.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Колба-1.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Колба.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Штатив.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Кристализатор.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0},
-      {text: "Faggot", imageRef: '../../../assets/images/2/Пробирка.png', textRevealed: false, imageRevealed: false, imagePosX: 0, imagePosY: 0}
-    ]},
-    {title: 'Second slide', acts: [
-      {text: "Suck my", imageRef: undefined, textRevealed: false, imageRevealed: false, imagePosX: 250, imagePosY: 100},
-      {text: "Dick", imageRef: '../../../assets/images/park.jpg', textRevealed: false, imageRevealed: false, imagePosX: 250, imagePosY: 100}
-    ]},
-    {title: 'Third slide', acts: []},
-    {title: 'Fourth slide', acts: []},
-    {title: 'Fifth slide', acts: []},
-    {title: 'Sixth slide', acts: []}
+    {
+      title: 'Тема',
+      type: SlideType.Title,
+      options: undefined,
+      acts: [],
+      topic: {
+        title: 'Лабораторний дослiд №1',
+        subtitle: 'Добування метану в лабораторiї',
+        description: 'Мета: Дослiдити один зi способiв добування метану в лабораторiї, дослiдити деякi фiзичнi та хiмiчнi властивостi добутої речовини'
+      }
+    },
+    {
+      title: 'Обладнання та реактиви', 
+      type: SlideType.TextImage,
+      topic: undefined,
+      options: undefined, 
+      acts: [
+        { 
+          text: "Штатив з кiльцем i азбестовою сiткою", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Штатив з кiльцем i азбестовою сiткою", 
+            imagePosX: 0, 
+            imagePosY: 0, 
+            zIndex: 1, 
+            width: 166, 
+            height: 291, 
+            imageRef: '../../../assets/images/tripod.png'
+          } 
+        },
+        { 
+          text: "Колба Вюрца", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Колба Вюрца", 
+            imagePosX: 86, 
+            imagePosY: 20, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/wurtz-flask.png'
+          } 
+        },
+        { 
+          text: "Спиртiвка", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Спиртiвка", 
+            imagePosX: 74, 
+            imagePosY: 193, 
+            zIndex: 2, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/alcohol-stove.png'
+          } 
+        },
+        { 
+          text: "Промивна склянка (2 шт)", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Промивна склянка", 
+            imagePosX: 175, 
+            imagePosY: 84, 
+            zIndex: 3, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/wash-flask.png'
+          } 
+        },
+        { 
+          text: "Кристалiзатор", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Кристалiзатор", 
+            imagePosX: 398, 
+            imagePosY: 182, 
+            zIndex: 4, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/crystallizer.png'
+          } 
+        },
+        { 
+          text: "Штатив для пробiрок", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Штатив для пробiрок", 
+            imagePosX: 270, 
+            imagePosY: 175, 
+            zIndex: 6, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/tube-tripod.png'
+          } 
+        },
+        { 
+          text: "Пробiрка", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Пробiрка", 
+            imagePosX: 368, 
+            imagePosY: 145, 
+            zIndex: 5, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/test-tube.png'
+          } 
+        },
+        { 
+          text: "Газовiдвiднi трубки (3 шт)", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Газовiдвiдна трубка", 
+            imagePosX: 206, 
+            imagePosY: 19, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/hose.png'
+          } 
+        },
+        { 
+          text: "Ацетат натрiю", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Ацетат натрiю", 
+            imagePosX: 520, 
+            imagePosY: 0, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/jar.png'
+          } 
+        },
+        { 
+          text: "Гiдроксид натрiю", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Гiдроксид натрiю", 
+            imagePosX: 610, 
+            imagePosY: 0, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/jar.png'
+          } 
+        },
+        { 
+          text: "Розчин кислоти", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Розчин кислоти", 
+            imagePosX: 560, 
+            imagePosY: 140, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/flask.png'
+          } 
+        },
+        { 
+          text: "Розчин лугу", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Розчин лугу", 
+            imagePosX: 644, 
+            imagePosY: 140, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/flask.png'
+          } 
+        },
+        { 
+          text: "Вода", 
+          textRevealed: false, 
+          imageRevealed: false, 
+          image: {
+            title: "Вода", 
+            imagePosX: 728, 
+            imagePosY: 140, 
+            zIndex: 0, 
+            width: 115, 
+            height: 149, 
+            imageRef: '../../../assets/images/flask.png'
+          } 
+        }
+      ]
+    }
   ];
 
   private pagination: SwiperPaginationInterface = {
@@ -99,16 +281,16 @@ export class MainComponent implements OnInit {
 
   revealAct = (page: number, index: number) => {
     this.slides[page].acts[index].textRevealed = true;
-    if (this.slides[page].acts[index].imageRef) {
+    if (this.slides[page].acts[index].image && this.slides[page].acts[index].image.imageRef) {
       setTimeout(() => {
-        const dialogRef = this.dialog.open(DialogComponent, { data: this.slides[page].acts[index].imageRef});
+        const dialogRef = this.dialog.open(DialogComponent, { data: {title: this.slides[page].acts[index].image.title, reference: this.slides[page].acts[index].image.imageRef}});
         dialogRef.afterClosed().subscribe(
           () => {
             this.slides[page].acts[index].imageRevealed = true;
             if (this.slides[page].acts.length - 1 == index) {
               this.disabled = false;
             } else {
-              setTimeout(() => this.revealAct(page, index + 1), 5000);
+              setTimeout(() => this.revealAct(page, index + 1), 2000);
             }
           }
         )
@@ -120,26 +302,5 @@ export class MainComponent implements OnInit {
     } else {
       setTimeout(() => this.revealAct(page, index + 1), 5000);
     }
-  }
-
-  getSlideImagesStyles = (slide: Slide) => {
-    let imageRefs = [];
-    let imagePositions: string[] = [];
-    for (let i = 0; i < slide.acts.length; ++i) {
-      if (slide.acts[i].imageRevealed) {
-        imageRefs.push(this.sanitizer.bypassSecurityTrustStyle(slide.acts[i].imageRef));
-        imagePositions.push(`${slide.acts[i].imagePosX}px ${slide.acts[i].imagePosY}px`);
-      }
-    }
-    if (!imageRefs.length) {
-      return "";
-    }
-
-    let styles = {};
-
-    styles['background-image'] = this.sanitizer.bypassSecurityTrustStyle(imageRefs.join());
-    styles['background-position'] = this.sanitizer.bypassSecurityTrustStyle(imagePositions.join());
-
-    return styles;
   }
 }

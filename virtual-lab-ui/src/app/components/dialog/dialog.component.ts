@@ -7,10 +7,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
+  public title: string;
+  public reference: string;
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.title = data.title;
+    this.reference = data.reference;
+  }
 
   ngOnInit() {
     setTimeout(() => this.dialogRef.close(), 3000);

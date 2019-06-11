@@ -11,8 +11,8 @@
           </div>
         </div>
         <div class="image-content">
-          <div *ngFor="let act of slide.acts; let i = index;" style="position: absolute" [ngStyle]="{ 'left': act.imagePosX + 'px', 'top': act.imagePosY + 'px', 'z-index': i }">
-            <img *ngIf="act.imageRevealed" [src]="act.imageRef" />
+          <div *ngFor="let act of slide.acts" style="position: absolute" [ngStyle]="{ 'left': act.image.imagePosX + 'px', 'top': act.image.imagePosY + 'px', 'z-index': act.image.zIndex }">
+            <img *ngIf="act.imageRevealed" [src]="act.image.imageRef" />
           </div>
         </div>
       </div>
@@ -27,6 +27,6 @@
   </div>
 </div>
 <div class="btn-holder">
-  <div class="btn prev" [ngClass]="{'disabled': ind == 0 || disabled}" (click)="prevPage()"><mat-icon style="font-size: 220px !important;">arrow_back</mat-icon></div>
-  <div class="btn next" [ngClass]="{'disabled': (ind == slides.length - 1) || disabled}" (click)="nextPage()"><mat-icon style="font-size: 220px !important;">arrow_forward</mat-icon></div>
+  <div class="btn prev" [ngClass]="{'disabled': ind == 0 || disabled}" (click)="prevPage()"><mat-icon style="height: 220px !important; width: 220px !important; font-size: 220px !important;">arrow_back</mat-icon></div>
+  <div class="btn next" [ngClass]="{'disabled': (ind == slides.length - 1) || disabled}" (click)="nextPage()"><mat-icon style="height: 220px !important; width: 220px !important; font-size: 220px !important;">arrow_forward</mat-icon></div>
 </div>
