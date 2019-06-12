@@ -17,6 +17,40 @@
   height: 100%;
 }
 
+.card {
+  flex: 1 0 21%;
+  height: 27%;
+  border-radius: 6px;
+  margin: 0.5% 0.5%;
+  box-shadow: 0 0 4px 2px #404040;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 4px 4px #808080;
+  }
+  img {
+    object-fit: contain;
+    vertical-align: top;
+  }
+}
+
+.correct {
+  background-color: #4cf53e;
+}
+
+.wrong {
+  background-color: #ff0000;
+}
+
+.topic-holder {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .text-content {
   width: 30%;
   height: calc(100% - 6px - 6rem);
@@ -97,11 +131,18 @@
 }
 
 .text {
+  font-size: 18px;
+  margin-left: 30px;
   -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein 2s; /* Firefox < 16 */
   -ms-animation: fadein 2s; /* Internet Explorer */
   -o-animation: fadein 2s; /* Opera < 12.1 */
   animation: fadein 2s;
+}
+
+.paragraph-title {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 img {
